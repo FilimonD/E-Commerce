@@ -1,25 +1,42 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useStore } from "./storeContext";
 
 const PrimaryNav = () => {
+  const { state, dispatch } = useStore();
+
+  function getQuantity() {
+    const total = state.reduce((total, item) => {
+      return (total += item.quantity);
+    }, 0);
+    if (total > 0) {
+      return `(${total})`;
+    }
+  }
+
   return (
-    <Navbar bg="dark" variant="dark" expand="md">
-      <Container>
-        <Navbar.Brand href="#home">Bouna-Sal</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/clothing">Clothing</Nav.Link>
-            <Nav.Link href="/trainers">Trainers</Nav.Link>
-            <Nav.Link href="/accessories ">Accesories</Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link href="/signin">Sign-In</Nav.Link>
-            <Nav.Link href="/createaccount">Create Account</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+    <Navbar sticky="top" className="navbar-items" expand="md">
+      <Navbar.Brand style={{ color: "white" }} href="/">
+        Bouna-Sal
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav
+          className="mr-auto"
+          style={{ textDecoration: "none", color: "white" }}
+        >
+          <Link to="/">Home</Link>
+          <Link to="/clothings">Clothings</Link>
+          <Link to="/trainers">Trainers</Link>
+          <Link to="/accessories">Accessories</Link>
+        </Nav>
+        <Nav className="mr-0">
+          <Link to="/checkout">Checkout {getQuantity()} </Link>
+          <Link to="/signin">Sign-In</Link>
+          <Link to="/createaccount">Create Account</Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };
