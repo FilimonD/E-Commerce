@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
+import { useStore, storeContext } from "./storeContext";
 
 function AccessoriesScreen() {
   const [accessories, setAccessories] = useState([]);
+  const { state, dispatch } = useStore();
   useEffect(() => {
     fetch("http://localhost:3001/accessories")
       .then(response => response.json())
       .then(accessories => setAccessories(accessories));
   }, []);
+
+  function addToCart(accessory) {
+    dispatch({ product: accessory, type: "add" });
+  }
 
   return (
     <Container className="my-5">
@@ -25,10 +31,16 @@ function AccessoriesScreen() {
             >
               <Card>
                 <Link to={"/accessories/" + accessory.id.toString()}>
-                  <Card.Img variant="top" src={accessory.imageUrl} />
+                  <Card.Img
+                    variant="top"
+                    src={accessory.imageUrl}
+                    style={{ height: "280px", objectFit: "contain" }}
+                  />
                 </Link>
                 <Card.Body>
-                  <Card.Title>{accessory.name}</Card.Title>
+                  <Card.Title style={{ height: "48px" }}>
+                    {accessory.name}
+                  </Card.Title>
                   <Card.Text>£{accessory.price}</Card.Text>
                   <Form.Group
                     style={{ maxWidth: "fit-content" }}
@@ -43,7 +55,12 @@ function AccessoriesScreen() {
                     </Form.Control>
                   </Form.Group>
 
-                  <Button variant="primary">Add To Cart</Button>
+                  <Button
+                    onClick={() => addToCart(accessory)}
+                    variant="primary"
+                  >
+                    Add To Cart
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
