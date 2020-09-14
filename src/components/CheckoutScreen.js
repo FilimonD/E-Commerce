@@ -4,10 +4,6 @@ import { Button, Container, Row } from "react-bootstrap";
 
 function CheckoutScreen() {
   const { state, dispatch } = useStore();
-  const [total, setTotal] = useState(0);
-  function addToCart(item) {
-    dispatch({ product: item, type: "add" });
-  }
 
   function removeFromCart(item) {
     dispatch({ product: item, type: "remove" });
@@ -18,13 +14,12 @@ function CheckoutScreen() {
   };
 
   function getTotal() {
-    const total = state.reduce((total, item) => {
-      return (total += item.price);
+    const totalPrice = state.reduce((total, item) => {
+      return (total += item.price * item.quantity);
     }, 0);
-    return total;
+    return totalPrice;
   }
-  //   state.reduce((totalCost, item) => totalCost + item.price);
-  // }
+
   return (
     <Container className="ml-2 mt-5 checkout">
       <table className="mt-5 ">
@@ -33,6 +28,7 @@ function CheckoutScreen() {
             <th>Name</th>
             <th>Price</th>
             <th>Size</th>
+            <th>Color</th>
             <th>Quantity</th>
             <th>Actions</th>
           </tr>
@@ -40,9 +36,11 @@ function CheckoutScreen() {
         <tbody>
           {state.map(item => (
             <tr key={item.name}>
-              <td>{item.name} </td>
-              <td> £{item.price}</td>
+              <td>{item.name}</td>
+
+              <td>£{item.price}</td>
               <td>{item.size}</td>
+              <td>{item.color}</td>
               <td>{item.quantity}</td>
               <td>
                 <Button
