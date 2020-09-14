@@ -31,10 +31,8 @@ const PrimaryNav = () => {
           <Link to="/trainers">Trainers</Link>
           <Link to="/accessories">Accessories</Link>
         </Nav>
-        <Nav className="mr-0">
+        <Nav className="mr-2">
           <Link to="/checkout">Checkout {getQuantity()} </Link>
-          <Link to="/signin">Sign-In</Link>
-          <Link to="/createaccount">Create Account</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
