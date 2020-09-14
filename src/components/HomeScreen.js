@@ -5,20 +5,17 @@ import { Container, Row, Col, Card, Jumbotron } from "react-bootstrap";
 function HomeScreen() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/categories")
+    fetch("https://bouna-sal.herokuapp.com/categories")
       .then(response => response.json())
       .then(categories => setCategories(categories));
   }, []);
 
   return (
     <>
-      <Jumbotron fluid className="hero">
+      <Jumbotron fluid className="hero mb-0">
         <Container style={{ paddingBottom: "8rem", paddingTop: "8rem" }}>
-          <h1>Check out the latest products</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal
-            space of its parent.
-          </p>
+          <h1>Become the best version of yourself</h1>
+          <p>Welcome to our home page.</p>
         </Container>
       </Jumbotron>
 
@@ -35,8 +32,9 @@ function HomeScreen() {
                 xl={4}
               >
                 <Link to={category.name}>
-                  <Card className="mt-5">
+                  <Card className="mt-0 py-0">
                     <Card.Img
+                      className="Home-images"
                       variant="top"
                       src={category.imageUrl}
                       style={{
