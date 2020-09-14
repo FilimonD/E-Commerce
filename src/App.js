@@ -36,7 +36,7 @@ function App() {
             <Route>
               <NotFound />
             </Route>
-            <Route path="/checkout">
+            <Route exact path="/checkout">
               <CheckoutScreen />
             </Route>
           </Switch>
