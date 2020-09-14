@@ -35,7 +35,7 @@ body {
 }
 
 .hero {
-  background: url("./bktrack.jpg");
+  background: url("./bg.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -46,3 +46,12 @@ body {
 /* .checkout {
   border: 5px solid;
 } */
+
+/* .Home-images {
+  background-color: #f0f1f0fb;
+  
+} */
+
+ul li {
+  list-style: none;
+}
