@@ -19,7 +19,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/E-Commerce">
               <HomeScreen />
             </Route>
             <Route exact path="/trainers">
