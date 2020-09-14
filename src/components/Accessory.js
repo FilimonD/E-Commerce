@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Card, Button, Form } from "react-bootstrap";
 
-const sizes = Array.from(Array(10), (_, i) => i + 1);
+const colors = ["Red", "Blue", "Black"];
 const quantities = Array.from(Array(10), (_, i) => i + 1);
 
-function Trainer(props) {
-  const [size, setSize] = useState(sizes[0]);
+function Accessory(props) {
+  const [color, setColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(quantities[0]);
 
-  const handleSizeChange = event => {
-    setSize(event.target.value);
+  const handleColorChange = event => {
+    setColor(event.target.value);
   };
 
   const handleQuantityChange = event => {
@@ -18,22 +18,22 @@ function Trainer(props) {
   };
 
   const handleAddToCart = () => {
-    const shoeItem = {
-      id:props.id,
+    const accessoryItem = {
+      id: props.id,
       name: props.name,
       price: props.price,
       image: props.imageUrl,
-      size: size,
+      color: color,
       quantity: quantity
     };
 
-    props.addToStore(shoeItem);
+    props.addToStore(accessoryItem);
   };
 
   return (
     <Col className="mb-5" xs={12} md={6} lg={4} xl={3}>
       <Card>
-        <Link to={"/trainers/" + props.id.toString()}>
+        <Link to={"/accessories/" + props.id.toString()}>
           <Card.Img
             style={{ height: "300px", objectFit: "contain" }}
             variant="top"
@@ -49,10 +49,14 @@ function Trainer(props) {
             style={{ maxWidth: "fit-content" }}
             controlId="exampleForm.ControlSelect1"
           >
-            <Form.Label>Select Size</Form.Label>
-            <Form.Control as="select" onChange={handleSizeChange} value={size}>
-              {sizes.map(size => (
-                <option key={size}>{size}</option>
+            <Form.Label>Select Color</Form.Label>
+            <Form.Control
+              as="select"
+              onChange={handleColorChange}
+              value={color}
+            >
+              {colors.map(color => (
+                <option key={color}>{color}</option>
               ))}
             </Form.Control>
             <Form.Label> Quantity</Form.Label>
@@ -77,4 +81,4 @@ function Trainer(props) {
   );
 }
 
-export default Trainer;
+export default Accessory;

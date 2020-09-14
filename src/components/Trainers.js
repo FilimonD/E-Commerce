@@ -4,13 +4,13 @@ import { useStore } from "./storeContext";
 import Trainer from "./Trainer";
 
 function Trainers() {
-  const [trainers, settrainers] = useState([]);
+  const [trainers, setTrainers] = useState([]);
   const { state, dispatch } = useStore();
 
   useEffect(() => {
-    fetch("http://localhost:3001/trainers")
+    fetch("https://bouna-sal.herokuapp.com/trainers")
       .then(response => response.json())
-      .then(trainers => settrainers(trainers));
+      .then(trainers => setTrainers(trainers));
   }, []);
 
   function addToCart(shoeItem) {

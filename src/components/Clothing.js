@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Card, Button, Form } from "react-bootstrap";
 
-const sizes = Array.from(Array(10), (_, i) => i + 1);
+const sizes = ["X-small", "Small", "Medium", "Large"];
 const quantities = Array.from(Array(10), (_, i) => i + 1);
 
-function Trainer(props) {
+function Clothing(props) {
   const [size, setSize] = useState(sizes[0]);
   const [quantity, setQuantity] = useState(quantities[0]);
 
@@ -18,8 +18,8 @@ function Trainer(props) {
   };
 
   const handleAddToCart = () => {
-    const shoeItem = {
-      id:props.id,
+    const clothingItem = {
+      id: props.id,
       name: props.name,
       price: props.price,
       image: props.imageUrl,
@@ -27,13 +27,13 @@ function Trainer(props) {
       quantity: quantity
     };
 
-    props.addToStore(shoeItem);
+    props.addToStore(clothingItem);
   };
 
   return (
     <Col className="mb-5" xs={12} md={6} lg={4} xl={3}>
       <Card>
-        <Link to={"/trainers/" + props.id.toString()}>
+        <Link to={"/clothings/" + props.id.toString()}>
           <Card.Img
             style={{ height: "300px", objectFit: "contain" }}
             variant="top"
@@ -41,9 +41,7 @@ function Trainer(props) {
           />
         </Link>
         <Card.Body style={{ height: "100%" }}>
-          <Card.Title style={{ height: "48px" }}>
-            <h6>{props.name}</h6>
-          </Card.Title>
+          <Card.Title style={{ height: "48px" }}>{props.name}</Card.Title>
           <Card.Text>£{props.price}</Card.Text>
           <Form.Group
             style={{ maxWidth: "fit-content" }}
@@ -55,7 +53,7 @@ function Trainer(props) {
                 <option key={size}>{size}</option>
               ))}
             </Form.Control>
-            <Form.Label> Quantity</Form.Label>
+            <Form.Label>Quantity</Form.Label>
             <Form.Control
               style={{ maxWidth: "fit-content" }}
               as="select"
@@ -77,4 +75,4 @@ function Trainer(props) {
   );
 }
 
-export default Trainer;
+export default Clothing;
