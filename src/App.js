@@ -5,11 +5,12 @@ import Navbar from "./components/Navbar";
 import Trainers from "./components/Trainers";
 import HomeScreen from "./components/HomeScreen";
 import ClothingScreen from "./components/ClothingScreen";
-import ProductScreen from "./components/ProductScreen";
 import AccessoriesScreen from "./components/AccessoriesScreen";
 import { StoreProvider } from "./components/storeContext";
 import CheckoutScreen from "./components/CheckoutScreen";
+import NotFound from "./components/NotFound";
 import index from "./index.css";
+import { NOTFOUND } from "dns";
 
 function App() {
   return (
@@ -24,20 +25,16 @@ function App() {
             <Route exact path="/trainers">
               <Trainers />
             </Route>
-            <Route path="/trainers/:id">
-              <ProductScreen />
-            </Route>
+
             <Route exact path="/clothings">
               <ClothingScreen />
             </Route>
-            <Route path="/clothings/:id">
-              <ProductScreen />
-            </Route>
+
             <Route exact path="/accessories">
               <AccessoriesScreen />
             </Route>
-            <Route path="/accessories/:id">
-              <ProductScreen />
+            <Route>
+              <NotFound />
             </Route>
             <Route path="/checkout">
               <CheckoutScreen />
