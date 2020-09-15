@@ -17,8 +17,8 @@ const PrimaryNav = () => {
 
   return (
     <Navbar sticky="top" className="navbar-items" expand="md">
-      <Navbar.Brand style={{ color: "white" }} href="/">
-        Bouna-Sal
+      <Navbar.Brand style={{ color: "white" }}>
+        <Link to="/">Bouna-Sal</Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
