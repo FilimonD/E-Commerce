@@ -16,7 +16,7 @@ function App() {
   return (
     <StoreProvider>
       <div className="App">
-        <BrowserRouter basename="/E-Commerce">
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Navbar />
           <Switch>
             <Route exact path="/">
