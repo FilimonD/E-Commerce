@@ -16,10 +16,10 @@ function App() {
   return (
     <StoreProvider>
       <div className="App">
-        <BrowserRouter>
+        <BrowserRouter basename="/E-Commerce">
           <Navbar />
           <Switch>
-            <Route exact path="/E-Commerce">
+            <Route exact path="/">
               <HomeScreen />
             </Route>
             <Route exact path="/trainers">
