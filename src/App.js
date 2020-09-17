@@ -33,11 +33,12 @@ function App() {
             <Route exact path="/accessories">
               <AccessoriesScreen />
             </Route>
-            <Route>
-              <NotFound />
-            </Route>
+
             <Route exact path="/checkout">
               <CheckoutScreen />
+            </Route>
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
         </BrowserRouter>
