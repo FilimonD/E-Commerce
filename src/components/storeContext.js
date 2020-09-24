@@ -10,7 +10,7 @@ const findItemIndex = (state, product) =>
       )
     : product.color
     ? state.findIndex(
-        item => item.id && product.id && item.color === product.color
+        item => item.id === product.id && item.color === product.color
       )
     : state.findIndex(item => item.id === product.id);
 
@@ -26,8 +26,9 @@ function cartReducer(state, action) {
           id: action.product.id,
           name: action.product.name,
           size: action.product.size,
+          color: action.product.color,
           quantity: action.product.quantity + state[itemIndex].quantity,
-          price: action.product.price
+          price: action.product.price.toFixed(2)
           // price:
           //   action.product.price *
           //   (action.product.quantity + state[itemIndex].quantity)
