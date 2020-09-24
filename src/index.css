@@ -55,3 +55,26 @@ body {
 ul li {
   list-style: none;
 }
+
+#checkout {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #1e2635;
+  width: 100%;
+}
+
+#checkout tr,
+#checkout th {
+  border: 1px solid #1e2635;
+  padding: 8px;
+}
+
+#total {
+  border: 1px solid #1e2635;
+  padding: 8px;
+}
+
+#checkout tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
