@@ -15,7 +15,7 @@ function HomeScreen() {
       <Jumbotron fluid className="hero mb-0">
         <Container style={{ paddingBottom: "8rem", paddingTop: "8rem" }}>
           <h1>Become the best version of yourself</h1>
-          <p>Welcome to our home page.</p>
+          <p>Welcome to our home page</p>
         </Container>
       </Jumbotron>
 
@@ -31,7 +31,7 @@ function HomeScreen() {
                 lg={4}
                 xl={4}
               >
-                <Link to={category.name}>
+                <Link to={category.name} style={{ textDecoration: "none" }}>
                   <Card className="mt-0 py-0">
                     <Card.Img
                       className="Home-images"
@@ -46,7 +46,7 @@ function HomeScreen() {
                     <Card.Body className="py-1">
                       <Card.Title
                         className="mb-1 text-center"
-                        style={{ textDecoration: "none", color: "blue" }}
+                        style={{ color: "black" }}
                       >
                         {category.name.toUpperCase()}
                       </Card.Title>
