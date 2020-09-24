@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+
 import { useStore } from "./storeContext";
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 
 function CheckoutScreen() {
   const { state, dispatch } = useStore();
@@ -8,10 +9,6 @@ function CheckoutScreen() {
   function removeFromCart(item) {
     dispatch({ product: item, type: "remove" });
   }
-  const currencyOptions = {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  };
 
   function getTotal() {
     const totalPrice = state.reduce((total, item) => {
@@ -22,25 +19,26 @@ function CheckoutScreen() {
 
   return (
     <Container className="ml-2 mt-5 checkout">
-      <table className="mt-5 ">
+      <Table id="checkout" className="mt-5" responsive="sm">
         <thead>
           <tr>
             <th>Name</th>
             <th>Price</th>
             <th>Size</th>
-            <th>Color</th>
             <th>Quantity</th>
-            <th>Actions</th>
+           
           </tr>
         </thead>
         <tbody>
           {state.map(item => (
             <tr key={item.name}>
-              <td>{item.name}</td>
+              <td>
+                {item.name} {item.color && ` (${item.color})`}
+              </td>
 
-              <td>£{item.price}</td>
-              <td>{item.size}</td>
-              <td>{item.color}</td>
+              <td>£{item.price.toFixed(2)}</td>
+              <td>{item.size || "-"}</td>
+
               <td>{item.quantity}</td>
               <td>
                 <Button
@@ -48,18 +46,19 @@ function CheckoutScreen() {
                   onClick={() => removeFromCart(item)}
                   variant="primary"
                 >
-                  Remove from cart
+                  Remove
                 </Button>
               </td>
             </tr>
           ))}
 
           <tr>
-            <td>Total items:{state.length}</td>
-            <td style={{ textAlign: "end" }}>Total:£{getTotal()}</td>
+            <td style={{ textAlign: "end" }} colSpan="2" id="total">
+              Total is :£{getTotal().toFixed(2)}
+            </td>
           </tr>
         </tbody>
-      </table>
+      </Table>
     </Container>
   );
 }
