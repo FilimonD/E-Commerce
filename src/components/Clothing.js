@@ -21,7 +21,7 @@ function Clothing(props) {
     const clothingItem = {
       id: props.id,
       name: props.name,
-      price: props.price,
+      price: Number(props.price),
       image: props.imageUrl,
       size: size,
       quantity: quantity
@@ -41,8 +41,10 @@ function Clothing(props) {
           />
         </Link>
         <Card.Body style={{ height: "100%" }}>
-          <Card.Title style={{ height: "48px" }}>{props.name}</Card.Title>
-          <Card.Text>£{props.price}</Card.Text>
+          <Card.Title style={{ height: "48px", fontSize: "20px" }}>
+            {props.name}
+          </Card.Title>
+          <Card.Text>£{props.price.toFixed(2)}</Card.Text>
           <Form.Group
             style={{ maxWidth: "fit-content" }}
             controlId="exampleForm.ControlSelect1"

@@ -19,7 +19,7 @@ function Trainer(props) {
 
   const handleAddToCart = () => {
     const shoeItem = {
-      id:props.id,
+      id: props.id,
       name: props.name,
       price: props.price,
       image: props.imageUrl,
@@ -44,7 +44,7 @@ function Trainer(props) {
           <Card.Title style={{ height: "48px" }}>
             <h6>{props.name}</h6>
           </Card.Title>
-          <Card.Text>£{props.price}</Card.Text>
+          <Card.Text>£{props.price.toFixed(2)}</Card.Text>
           <Form.Group
             style={{ maxWidth: "fit-content" }}
             controlId="exampleForm.ControlSelect1"

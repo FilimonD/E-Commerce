@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { Col, Card, Button, Form } from "react-bootstrap";
 
 const colors = ["Red", "Blue", "Black"];
@@ -21,7 +22,7 @@ function Accessory(props) {
     const accessoryItem = {
       id: props.id,
       name: props.name,
-      price: props.price,
+      price: Number(props.price),
       image: props.imageUrl,
       color: color,
       quantity: quantity
@@ -44,7 +45,7 @@ function Accessory(props) {
           <Card.Title style={{ height: "48px" }}>
             <h6>{props.name}</h6>
           </Card.Title>
-          <Card.Text>£{props.price}</Card.Text>
+          <Card.Text>£{props.price.toFixed(2)}</Card.Text>
           <Form.Group
             style={{ maxWidth: "fit-content" }}
             controlId="exampleForm.ControlSelect1"
@@ -59,7 +60,7 @@ function Accessory(props) {
                 <option key={color}>{color}</option>
               ))}
             </Form.Control>
-            <Form.Label> Quantity</Form.Label>
+            <Form.Label>Quantity</Form.Label>
             <Form.Control
               style={{ maxWidth: "fit-content" }}
               as="select"

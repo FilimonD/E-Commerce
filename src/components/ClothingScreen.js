@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row} from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useStore } from "./storeContext";
 import Clothing from "./Clothing";
 
